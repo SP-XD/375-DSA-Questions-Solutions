@@ -54,18 +54,17 @@ class Solution:
                 #two pointers
                 left=i+1
                 right=len(nums)-1
-                sum=0-nums[i]
                 while(left<right):
                     
-                    if nums[left]+nums[right]==sum:
+                    threesum=nums[i]+nums[left]+nums[right]
+                    if threesum==0:
                         triplets.append([nums[i], nums[left], nums[right]]) 
-                    
                         #skipping duplicates
                         while (left<right and nums[left]==nums[left+1]):
                             left+=1
                         while (left<right and nums[right]==nums[right-1]):
                             right-=1
-                    if nums[left]+nums[right]>sum:
+                    if threesum>0:
                         right-=1
                     else:
                         left+=1
