@@ -49,13 +49,20 @@ class Solution:
         hashmap={}
 
         for s in strs:
+            '''
+            #complexity O( N*K ) : N is the len of strs, K is max len of each string in strs
+
             count=[0]*26                     # a....z counter array which is initialized with 0  
 
             for c in s:
                 count[ord(c)-ord('a')]+=1   #store the frequency of chars from s 
 
             hash=tuple(count)
-            
+            '''
+
+            #alternate solution 
+            hash=''.join(sorted(s))        #sorting all characters and joining them to form a new hash
+
             if hashmap.get(hash)!=None:     #if hash is already present (i.e, no keyError) then append s
                 hashmap[hash].append(s)
             else:                           #else add new hash and initialise s
@@ -64,4 +71,5 @@ class Solution:
         anagrams_res=hashmap.values()
 
         return anagrams_res
+
 # @lc code=end
